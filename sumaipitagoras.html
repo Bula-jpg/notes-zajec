@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="a" id="a">
+    <input type="number" name="b" id="b">
+
+    <button>oblicz sume</button>
+
+    <p id="suma"></p>
+
+    <script>
+        let suma_obliczona;
+        let pitagoras;
+
+        const suma = document.querySelector("#suma");
+        const x = document.querySelector("input[name='a']");
+        const y = document.querySelector("input[name='b']");
+        const but = document.querySelector("button");
+
+        but.addEventListener("click", function(ev){
+            suma_obliczona = parseInt(x.value) + parseInt(y.value);
+
+            pitagoras = Math.sqrt(Math.pow(parseInt(x.value), 2) + Math.pow(parseInt(y.value), 2));
+
+            console.log("Suma: ", suma_obliczona, " pitagoras: " + pitagoras);
+            document.write("Suma: " + suma_obliczona + " pitagoras: " + pitagoras);
+            suma.innerHTML = "Suma: " + suma_obliczona + " pitagoras: " + pitagoras;
+            alert("Suma: " + suma_obliczona + " pitagoras: " + pitagoras);
+        });
+    </script>
+
+</body>
+</html>
