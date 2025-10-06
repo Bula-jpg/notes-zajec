@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="szerokosc">Szerokość pomieszczenia: </label>
+        <input type="number" name="szerokosc" id="szerokosc"><br>
+        <label for="dlugosc">Długość: </label>
+        <input type="number" name="dlugosc" id="dlugosc"><br>
+        <input type="radio" name="typ" id="typ1" value="12">
+        <label for="typ1">Laminowane</label><br>
+        <input type="radio" name="typ" id="typ2" value="14">
+        <label for="typ2">Winylowe</label><br>
+        <input type="radio" name="typ" id="typ3" value="18">
+        <label for="typ3">Podlogowa</label>
+        <button type="submit">Oblicz</button>
+    </form>
+    <p id="wiadomosc"></p>
+    <script>
+        const szerokosc = document.querySelector("#szerokosc");
+        const dlugosc = document.querySelector("#dlugosc");
+        const wiadomosc = document.querySelector("#wiadomosc");
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            if(szerokosc.value == 0 || dlugosc.value == 0){ wiadomosc.innerHTML = "Wprowadź poprawne dane!"; return; }
+            const zaznaczone = document.querySelector("input[type='radio']:checked");
+            if(zaznaczone == null){ wiadomosc.innerHTML = "Wprowadź poprawne dane!"; return; }
+            const pole = szerokosc.value * dlugosc.value;
+            wiadomosc.innerHTML = "Pole powierzchni pomieszczenia: "+pole+", koszt montażu "+(pole*zaznaczone.value);
+        })
+    </script>
+</body>
+</html>
