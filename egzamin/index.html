@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pola figur</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h2>Pola figur płaskich</h2>
+    </header>
+    <main>
+        <nav>
+            <h3>MENU</h3>
+            <ul>
+                <li><a href="index.html">Prostokąt i trójkąt</a></li>
+                <li><a href="kolo.html">Okrąg i koło</a></li>
+            </ul>
+        </nav>
+        <section>
+            <img id="figura" src="1d.bmp" alt="Figura">
+            
+            <div>
+                <img id="v_1m" class="grafika" src="1m.bmp" alt="Wybierz trójkąt">
+                <img id="v_2m" class="grafika" src="2m.bmp" alt="Wybierz prostkokąt">
+            </div>
+        </section>
+        <aside>
+            <div style="width: 100%;">
+                <h3>Pole prostokąta / pole trójkąta</h3>
+            </div>
+            <label for="bok1">Bok prostokąta / podstawa trójkąta:</label>
+            <input type="text" id="bok1" name="bok1">
+            <label for="bok2">Drugi bok prostokąta / wysokość trójkąta:</label>
+            <input type="text" id="bok2" name="bok2">
+            <button id="oblicz">Oblicz</button>
+            <p id="wynik"></p>
+        </aside>
+    </main>
+    <footer>
+        <p>Autor: 00000000000000000</p>
+    </footer>
+
+    <script>
+        let obecny_obraz = "1d.bmp"
+
+        // skrypt #1
+        const figura = document.querySelector("#figura")
+
+        const v_1m = document.querySelector("#v_1m");
+        const v_2m = document.querySelector("#v_2m");
+
+        v_1m.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            figura.src = "1d.bmp"
+            obecny_obraz = "1d.bmp"
+        })
+        
+        v_2m.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            figura.src = "2d.bmp"
+            obecny_obraz = "2d.bmp"
+        })
+        
+        // skrypt #2
+        const wynik = document.querySelector("#wynik");
+        const bok1 = document.querySelector("#bok1");
+        const bok2 = document.querySelector("#bok2");
+
+        document.querySelector("#oblicz").addEventListener("click", (e)=>{
+            const obecna_figura = obecny_obraz;
+            let wynik_obliczen;
+
+            if( obecna_figura == "2d.bmp" ) {
+                wynik_obliczen = bok1.value * bok2.value;
+            } else if ( obecna_figura == "1d.bmp" ){
+                wynik_obliczen = bok1.value * bok2.value * 0.5;
+            }
+
+            wynik.innerHTML = wynik_obliczen
+        })
+
+    </script>
+</body>
+</html>
